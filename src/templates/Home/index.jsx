@@ -69,8 +69,6 @@ class Home extends Component {
           />
         </div>
 
-        {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
-
         {filteredPosts.length === 0 && <p>No posts found.</p>}
 
         <Posts posts={filteredPosts} />
