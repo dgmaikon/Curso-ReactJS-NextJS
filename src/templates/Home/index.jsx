@@ -12,7 +12,7 @@ export const Home = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [page, setPage] = useState(0);
   const [searchValue, setSearchValue] = useState("");
-  const [postPerPage] = useState(10);
+  const [postPerPage] = useState(2);
 
   const handleLoadPosts = useCallback(async (page, postPerPage) => {
     const postsAndPhotos = await loadPosts();
@@ -50,7 +50,7 @@ export const Home = () => {
     <section className="container">
       <div className="search-container">
         {!!searchValue && <h1>Search Value:{searchValue}</h1>}
-        <TextInput searchValue={searchValue} handleChange={handleChange} />
+        <TextInput searchValue={searchValue} handleChange={handleChange} placeholder="type your search"/>
       </div>
 
       {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
@@ -59,7 +59,7 @@ export const Home = () => {
       <div className="button-container">
         {!searchValue && (
           <Button
-            text="Load More Posts"
+            text="load more posts"
             onClick={loadMorePosts}
             disabled={noMorePosts}
           />
