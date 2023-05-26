@@ -1,12 +1,9 @@
-import p from "prop-types";
-import "./styles.css";
+import p from 'prop-types';
+import './styles.css';
 
-export const Button = ({ text, onClick, disabled=false }) => (
-  <button
-    className="button"
-    onClick={onClick}
-    disabled={disabled}>
-      {text}
+export const Button = ({ text, onClick, disabled = false }) => (
+  <button className="button" onClick={onClick} disabled={disabled}>
+    {text}
   </button>
 );
 

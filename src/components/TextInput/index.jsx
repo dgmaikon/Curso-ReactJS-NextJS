@@ -1,5 +1,5 @@
-import p from 'prop-types'
-import "./styles.css";
+import p from 'prop-types';
+import './styles.css';
 
 export const TextInput = ({ searchValue, handleChange }) => {
   return (
@@ -13,8 +13,7 @@ export const TextInput = ({ searchValue, handleChange }) => {
   );
 };
 
-
 TextInput.propTypes = {
   searchValue: p.string.isRequired,
   handleChange: p.func.isRequired,
-}
+};
