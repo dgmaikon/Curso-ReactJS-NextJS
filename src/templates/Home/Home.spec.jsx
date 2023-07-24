@@ -1,11 +1,15 @@
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
-import { describe, expect, it } from "vitest";
-import userEvent from '@testing-library/user-event'
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
-import {rest} from 'msw';
-import {setupServer} from 'msw/node';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 
-import { Home } from '.'
+import { Home } from '.';
 
 const handlers = [
   rest.get('*jsonplaceholder.typicode.com*', async (req, res, ctx) => {
@@ -74,19 +78,35 @@ describe('<Home />', () => {
 
     const search = screen.getByPlaceholderText(/type your search/i);
 
-    expect(screen.getByRole('heading', { name: 'title1 1' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'title2 2' })).toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: 'title3 3' })).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'title1 1' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'title2 2' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('heading', { name: 'title3 3' }),
+    ).not.toBeInTheDocument();
 
     userEvent.type(search, 'title1');
-    expect(screen.getByRole('heading', { name: 'title1 1' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'title2 2' })).toBeInTheDocument();
-    expect(screen.queryByRole('heading', { name: 'title3 3' })).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'title1 1' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'title2 2' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.queryByRole('heading', { name: 'title3 3' }),
+    ).not.toBeInTheDocument();
     // expect(screen.getByRole('heading', { name: 'Search value: title1 ' })).toBeInTheDocument();
 
     userEvent.clear(search);
-    expect(screen.getByRole('heading', { name: 'title1 1' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'title2 2' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'title1 1' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'title2 2' }),
+    ).toBeInTheDocument();
 
     // userEvent.type(search, 'post does not exist');
     // expect(screen.getByText('No posts found.')).toBeInTheDocument();
@@ -103,7 +123,9 @@ describe('<Home />', () => {
     const button = screen.getByRole('button', { name: /load more posts/i });
 
     userEvent.click(button);
-    expect(screen.getByRole('heading', { name: 'title3 3' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'title3 3' }),
+    ).toBeInTheDocument();
     expect(button).toBeDisabled();
   });
 });
