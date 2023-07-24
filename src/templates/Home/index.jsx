@@ -1,17 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
-import { loadPosts } from "../../utils/load-posts";
-import { Posts } from "../../components/Posts";
-import { Button } from "../../components/Button";
-import { TextInput } from "../../components/TextInput";
+import { loadPosts } from '../../utils/load-posts';
+import { Posts } from '../../components/Posts';
+import { Button } from '../../components/Button';
+import { TextInput } from '../../components/TextInput';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [page, setPage] = useState(0);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [postPerPage] = useState(2);
 
   const handleLoadPosts = useCallback(async (page, postPerPage) => {
@@ -50,7 +50,11 @@ export const Home = () => {
     <section className="container">
       <div className="search-container">
         {!!searchValue && <h1>Search Value:{searchValue}</h1>}
-        <TextInput searchValue={searchValue} handleChange={handleChange} placeholder="type your search"/>
+        <TextInput
+          searchValue={searchValue}
+          handleChange={handleChange}
+          placeholder="type your search"
+        />
       </div>
 
       {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
